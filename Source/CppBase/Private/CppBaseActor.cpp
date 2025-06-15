@@ -3,6 +3,7 @@
 
 #include "CppBaseActor.h"
 #include "Engine/Engine.h"
+#include "Math/UnrealMathUtility.h"
 
 int ACppBaseActor::Id = 0 ;
 // Sets default values
@@ -50,7 +51,7 @@ void ACppBaseActor::ShowInformation()
 void ACppBaseActor::SinMovement()
 {
 	SetActorLocation(FVector(this->InitialLocation.X, this->InitialLocation.Y, 
-	(FMath::Sin(this->Frequency * GetWorld()->GetTimeSeconds()) * this->Amplitude)
+	FMath::Sin(this->Frequency * (GetWorld()->GetTimeSeconds() + this->EnemyNum)) * this->Amplitude
 	+ this->InitialLocation.Z));
 }
 
